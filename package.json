@@ -1,0 +1,43 @@
+{
+  "name": "JSON-restructure",
+  "version": "1.0.0",
+  "description": "HapiJS Application",
+  "main": "index.js",
+  "engines": {
+    "node": "v12.22.*"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node .",
+    "start:service:dev": "nodemon .",
+    "test": "jest --coverage",
+    "test:tdd": "jest --watch",
+    "lint": "./node_modules/.bin/eslint .",
+    "swagger": "node swagger.js",
+    "swagger:dev": "nodemon swagger.js"
+  },
+  "keywords": [
+    "JSON-restructure",
+    "hapijs"
+  ],
+  "author": "Chinnawut Boonluea",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^20.2.1",
+    "dotenv": "^8.2.0",
+    "joi": "^17.4.0",
+    "yarn": "^1.22.10"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.21",
+    "chai": "^4.3.4",
+    "eslint": "^7.22.0",
+    "jest": "^26.6.3",
+    "jest-html-reporter": "^3.4.1",
+    "lint-staged": ">=10",
+    "nodemon": "^2.0.15",
+    "prettier": "2.2.1",
+    "sinon": "^9.2.4",
+    "supertest": "^6.1.3"
+  }
+}
