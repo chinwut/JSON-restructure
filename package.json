@@ -24,7 +24,11 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^20.2.1",
+    "@hapi/inert": "^6.0.5",
+    "@hapi/vision": "^6.1.0",
     "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "eslint-config-airbnb": "^19.0.4",
     "joi": "^17.4.0",
     "yarn": "^1.22.10"
   },
