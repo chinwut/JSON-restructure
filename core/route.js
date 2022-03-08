@@ -1,3 +1,6 @@
+const { moveObjectToCorrectChildrenLevel } = require('../controllers/jsonRestructure')
+const Joi = require('joi')
+
 const ViewRouter = [
 {
   method: 'GET',
@@ -14,7 +17,20 @@ const ViewRouter = [
   }
 }]
 
-const APIRouter = []
+const APIRouter = [{
+  method: 'POST',
+  path: '/api/restructure',
+  options: {
+    handler: (req, h) => {
+      return moveObjectToCorrectChildrenLevel(req.payload)
+    },
+    notes: ['Re-organize JSON structure by parent level, followed by children level.'],
+    tags: ['api', 'JSON Restructure'],
+    validate: {
+      payload: Joi.object()
+    }
+  }
+}]
 
 const mainRouter = [
   ...ViewRouter,

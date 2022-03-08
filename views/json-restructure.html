@@ -161,24 +161,31 @@
             }]
         }
         $('#textEditor').val(JSON.stringify(dataExample, null, 2))
-        $('#textOutput').text(JSON.stringify(dataExample, null, 2))
       })
-      $('#buttonJSONReStructure').on('click', function(){
+      $('#buttonJSONReStructure').on('click', function () {
+        $('#textOutput').text('')
         var textEditor = $('#textEditor').val()
-        $.ajax({
-          url: '',
-          type: 'POST',
-          data: JSON.stringify(JSON.parse(textEditor)),
-          headers: {
-            "Content-Type": "application/json"
-          },
-          success: function (data) {
-            $('#textOutput').text(JSON.stringify(dataExample, null, 2))
-          }
-        })
+        try {
+          $.ajax({
+            url: '/api/restructure',
+            type: 'POST',
+            data: JSON.stringify(JSON.parse(textEditor)),
+            headers: { "Content-Type": "application/json" },
+            success: function (result) {
+              $('#textOutput').text(JSON.stringify(result, null, 2))
+            },
+            error: function (request, status, error, message) {
+              $('#textOutput').text(JSON.parse(request.responseText).message)
+            }
+          })
+        }
+        catch (err) {
+          $('#textOutput').text(err)
+        }
       })
       $('#buttonReset').on('click', function(){
-        var txtInput = $('#textEditor').val()
+        $('#textOutput').text('')
+        $('#textEditor').val('')
       })
     })
     </script>
