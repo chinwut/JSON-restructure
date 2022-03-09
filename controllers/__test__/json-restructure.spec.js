@@ -1,7 +1,7 @@
 const { transformObjectToArrayAndFlat,
   getArrayParentLevel,
   recursivelyChildrenWithId,
-  moveObjectToCorrectChildrenLevel } = require('../jsonRestructure')
+  moveObjectToCorrectChildrenLevel } = require('../json-restructure')
 
 const sampleInputFile1 = require('../mockData/sample-input1.json')
 const expectOutputFile1 = require('../mockData/expect-output1.json')

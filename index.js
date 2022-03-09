@@ -12,7 +12,6 @@ async function start() {
     host: config.HOST
   });
 
-
   await server.register([
     Inert,
     Vision

@@ -32,9 +32,6 @@ const moveObjectToCorrectChildrenLevel = (objectInput) => {
   return result
 }
 
-
-
-
 module.exports = {
   transformObjectToArrayAndFlat,
   getArrayParentLevel,

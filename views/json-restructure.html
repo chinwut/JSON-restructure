@@ -91,7 +91,7 @@
   </div>
   <div class="output-container">
     <div class="buttons-container">
-      <button id="buttonJSONReStructure">JSON Re-Structure</button>
+      <button id="buttonjson-restructure">JSON Re-Structure</button>
       <button id="buttonReset">Reset</button>
     </div>
     <div class="output-display">
@@ -162,7 +162,7 @@
         }
         $('#textEditor').val(JSON.stringify(dataExample, null, 2))
       })
-      $('#buttonJSONReStructure').on('click', function () {
+      $('#buttonjson-restructure').on('click', function () {
         $('#textOutput').text('')
         var textEditor = $('#textEditor').val()
         try {

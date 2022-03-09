@@ -1,21 +1,22 @@
-const { moveObjectToCorrectChildrenLevel } = require('../controllers/jsonRestructure')
+const { moveObjectToCorrectChildrenLevel } = require('../controllers/json-restructure')
+const { getDataFromGitHubAPI } = require('../controllers/github-search')
 const Joi = require('joi')
 
 const ViewRouter = [
-{
-  method: 'GET',
-  path: '/',
-  handler: (request, h) => {
-    return h.file('./views/index.html')
-  }
-},
-{
-  method: 'GET',
-  path: '/json-restructure',
-  handler: (request, h) => {
-    return h.file('./views/json-restructure.html')
-  }
-}]
+  {
+    method: 'GET',
+    path: '/',
+    handler: (request, h) => {
+      return h.file('./views/index.html')
+    }
+  },
+  {
+    method: 'GET',
+    path: '/json-restructure',
+    handler: (request, h) => {
+      return h.file('./views/json-restructure.html')
+    }
+  }]
 
 const APIRouter = [{
   method: 'POST',
@@ -29,6 +30,17 @@ const APIRouter = [{
     validate: {
       payload: Joi.object()
     }
+  }
+}, {
+  method: 'GET',
+  path: '/api/github/search',
+  options: {
+    handler: async (req, h) => {
+      const params = req.query || {}
+      return await getDataFromGitHubAPI(params.q, params.page)
+    },
+    notes: ['the GitHub Search API with pagination to find all the repositories that match the query nodejs'],
+    tags: ['api', 'GitHub Search API'],
   }
 }]
 
