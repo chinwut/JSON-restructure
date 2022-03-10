@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+
+  json-structure:
+    build: .
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    container_name: jsonstructure
+    ports:
+      - 9000:9000
+    env_file:
+      - .env
+    environment:
+      - PORT=9000
+      - HOST=0.0.0.0
+    command: yarn start
+    mem_limit: 300M

@@ -10,11 +10,7 @@
   "scripts": {
     "start": "node .",
     "start:service:dev": "nodemon .",
-    "test": "jest --coverage",
-    "test:tdd": "jest --watch",
-    "lint": "./node_modules/.bin/eslint .",
-    "swagger": "node swagger.js",
-    "swagger:dev": "nodemon swagger.js"
+    "test": "jest --coverage"
   },
   "keywords": [
     "JSON-restructure",
