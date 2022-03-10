@@ -16,7 +16,6 @@ const getDataGitHubSearchAPIService = async (query = 'nodejs', currentPage = 1) 
     },
     json: true
   }
-
   const responseObject = await request(requestOption)
   return responseObject
 }

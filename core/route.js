@@ -23,13 +23,10 @@ const ViewRouter = [
     handler: async (request, h) => {
       const params = request.query || {}
       const { q, page, per_page, total_count, items } = await getDataFromGitHubAPI(params.q, params.page)
-
-
       const prev = (page - 1 <= 0) ? 1 : page - 1
       const next = page + 1
 
       return h.view('github-search-api', {
-
         prev,
         next,
         q,
