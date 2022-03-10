@@ -3,6 +3,7 @@ const Hapi = require('@hapi/hapi')
 const Inert = require('@hapi/inert')
 const Vision = require('@hapi/vision')
 const Ejs = require('ejs')
+const HapiSwagger = require('hapi-swagger')
 const mainRouter = require('./core/route')
 const config = require('./core/config')
 
@@ -14,7 +15,17 @@ async function start() {
 
   await server.register([
     Inert,
-    Vision
+    Vision,
+    {
+      plugin: HapiSwagger,
+      options: {
+        info: {
+          title: 'JSON Restructure and Github Search API Swagger'
+        },
+        documentationPath: '/swagger',
+        grouping: 'tags'
+      }
+    }
   ])
 
   server.views({

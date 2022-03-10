@@ -6,6 +6,8 @@ const { transformObjectToArrayAndFlat,
 const sampleInputFile1 = require('../mockData/sample-input1.json')
 const expectOutputFile1 = require('../mockData/expect-output1.json')
 
+const sampleInputFile2 = require('../mockData/sample-input2.json')
+const expectOutputFile2 = require('../mockData/expect-output2.json')
 
 describe('controllers', () => {
   describe('json Restructure', () => {
@@ -207,6 +209,10 @@ describe('controllers', () => {
     describe('Function moveObjectToCorrectChildrenLevel', () => {
       it('move children object under parent hierarchy follow key parent id input (Appendix1)', () => {
         expect(moveObjectToCorrectChildrenLevel(sampleInputFile1)).toEqual(expectOutputFile1)
+      })
+
+      it('move children object under parent hierarchy follow key parent id input (Create new one)', () => {
+        expect(moveObjectToCorrectChildrenLevel(sampleInputFile2)).toEqual(expectOutputFile2)
       })
 
       it('input empty object should be return empty array ', () => {

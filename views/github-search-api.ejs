@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>JSON-restructure</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <style>
+    * {
+      font-family: 'Tahoma,Geneva,sans-serif', monospace;
+    }
+
+    .flex-container {
+      width: 80%;
+      height: 100%;
+      border: 1px solid #ddd;
+      margin-top: 20px;
+    }
+
+    .flex {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .flex-right {
+      justify-content: flex-end;
+    }
+
+    .flex-left {
+      justify-content: flex-start;
+    }
+
+    .space-around {
+      justify-content: space-around;
+    }
+
+    .space-between {
+      justify-content: space-between;
+    }
+
+    .table-header,
+    .table-body,
+    .table-col {
+      width: 100%;
+    }
+
+    .table-header {
+      font-weight: 600;
+      text-transform: capitalize;
+      position: sticky;
+      top: 0px;
+      background: #fff;
+      z-index: 2;
+    }
+
+    a.no-under-line {
+      text-decoration: none;
+    }
+
+    .col-w35 {
+      width: 35%;
+    }
+
+    .table-header .table-row,
+    .table-body .table-row {
+      flex-direction: row;
+    }
+
+    .table-header .table-col,
+    .table-body .table-col {
+      align-self: center;
+      text-align: left;
+      padding: 5px;
+    }
+
+    .table-header .table-col,
+    .table-col.col-w35.col-center {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <p><span>Github Search API</span></p>
+  <p><span>-&nbsp;<a href="/">Home</a></span></p>
+  <div>
+    <div>
+      <form action="/search" method="GET">
+        repo search: <input type="text" name="q" value="<%=q%>">
+        go to page: <input type="text" name="page" value="<%=page%>">
+        <input type="submit" value="Search">
+      </form>
+    </div>
+    <div>
+      <br />
+      <div>Total items <%=total_count%>
+      </div>
+      <br />
+      <a class="no-under-line" href="/search?q=<%=q%>&page=<%=prev%>">&lt;</a>
+      <a class="no-under-line" href="/search?q=<%=q%>&page=<%=next%>">&gt;</a>
+      <br />
+      <div class="flex-container">
+        <div class="flex">
+          <div class="table-header">
+            <div class="flex table-row space-around">
+              <div class="table-col frozen col-w35 col-center">No.</div>
+              <div class="table-col frozen col-center">Repository Name</div>
+              <div class="table-col col-center">Description</div>
+              <div class="table-col col-centercol-center ">Owner</div>
+              <div class="table-col col-center col-w35 ">Total forks</div>
+            </div>
+          </div>
+          <div class="table-body">
+            <% items.forEach(function(item) { %>
+              <div class="flex table-row space-around">
+                <div class="table-col frozen col-w35 col-center">
+                  <%=item.index%>
+                </div>
+                <div class="table-col frozen">
+                  <a class="no-under-line" href="<%=item.repo_url%>" target="_blank">
+                    <%=item.repo_name%>
+                  </a>
+                </div>
+                <div class="table-col">
+                  <%=item.description%>
+                </div>
+                <div class="table-col ">
+                  <a class="no-under-line" href="<%=item.owner_url%>" target="_blank">
+                    <%=item.owner_name%>
+                  </a>
+                </div>
+                <div class="table-col col-w35 col-center">
+                  <%=item.forks%>
+                </div>
+              </div>
+              <% }); %>
+          </div>
+        </div>
+      </div>
+      <br />
+      <a class="no-under-line" href="/search?q=<%=q%>&page=<%=prev%>">&lt;</a>
+      <a class="no-under-line" href="/search?q=<%=q%>&page=<%=next%>">&gt;</a>
+    </div>
+  </div>
+</body>
+
+</html>
