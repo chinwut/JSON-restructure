@@ -39,7 +39,7 @@ http://localhost:9000/swagger
 $ npm start:service:dev
 ```
 
-## Run unittest
+## Run unittest with coverage report
 
 ```sh
 $ npm test

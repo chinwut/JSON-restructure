@@ -28,6 +28,18 @@ describe('controllers', () => {
         const result = await githubSearchController.getDataFromGitHubAPI('nodejs', 1)
         expect(result).toEqual(mockUpResult)
       })
+      it('should call service getDataGitHubSearchAPIService and result with mock up item with error return default and pages more than 1', async () => {
+        const mockUpResult = {
+          q: 'nodejs',
+          page: 2,
+          per_page: 10,
+          total_count: 0,
+          items: []
+        }
+        const result = await githubSearchController.getDataFromGitHubAPI('nodejs', 2)
+        expect(result).toEqual(mockUpResult)
+      })
     })
   })
 })
+

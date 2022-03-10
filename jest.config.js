@@ -2,6 +2,7 @@ module.exports = {
   verbose: true,
   collectCoverageFrom: [
     'controllers/*.js',
+    'services/*.js',
     '!**/node_modules/**',
     '!**/core/**',
     '!*.config.js',
